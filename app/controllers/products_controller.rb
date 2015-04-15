@@ -20,7 +20,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    product = current_user.products.build(product_params)
+    self.product = current_user.products.build(product_params)
 
     if product.save
       category.products << product
