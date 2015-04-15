@@ -5,7 +5,7 @@ class ProductsController < ApplicationController
   expose(:review) { Review.new }
   expose_decorated(:reviews, ancestor: :product)
 
-  before_action :proper_user, only: [:edit, :update]
+  before_action :proper_user, only: [:edit, :update, :destroy]
 
   def index
   end
@@ -20,7 +20,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    self.product = Product.new(product_params)
+    product = current_user.products.build(product_params)
 
     if product.save
       category.products << product
