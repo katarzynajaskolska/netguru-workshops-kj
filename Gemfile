@@ -21,6 +21,7 @@ gem 'ffaker'
 gem 'konf'
 gem 'twitter-bootswatch-rails'
 gem 'twitter-bootswatch-rails-helpers'
+gem 'twitter-bootswatch-rails-fontawesome'
 
 group :development do
   gem 'spring'
