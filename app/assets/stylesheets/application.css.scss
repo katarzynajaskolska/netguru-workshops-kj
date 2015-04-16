@@ -1,1 +1,9 @@
 @import "bootstrap";
+@import "sandstone/base";
+
+/*
+ *= require_self
+ *= require sandstone/loader
+ *= require sandstone/bootswatch
+ *= require sandstone/fontawesome
+*/
