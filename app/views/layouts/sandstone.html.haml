@@ -24,6 +24,7 @@
             = link_to 'Sign up', new_user_registration_path
 
           - else
+            %span #{current_user.fullname}
             = link_to 'Log out', destroy_user_session_path, method: :delete
     .container-fluid
       .row
