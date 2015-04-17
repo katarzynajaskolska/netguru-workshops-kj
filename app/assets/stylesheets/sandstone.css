@@ -5,3 +5,7 @@
  *= require sandstone/bootswatch
  *= require sandstone/font-awesome
 */
+
+.reviews-table{
+  margin-top: 30px;
+}

@@ -1,8 +1,9 @@
-%p= review.content
-%p
-  %b= review.rating
-  %em= review.author
-
+%tr
+  %td= review.content
+  %td
+    %b= review.rating
+  %td
+    %em= review.author
   - if current_user == review.user || current_user.admin?
-
-    = link_to 'Remove', category_product_review_path(review.product.category, review.product, review), method: :delete, data: { confirm: 'Are you sure?' }
+    %td
+      %strong= link_to 'Remove', category_product_review_path(review.product.category, review.product, review), method: :delete, data: { confirm: 'Are you sure?' }

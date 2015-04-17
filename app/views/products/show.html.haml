@@ -18,7 +18,11 @@
 %h3 Reviews
 = render 'reviews/form'
 
-= render reviews
+%table.table.table-hover.reviews-table
+  - if reviews.any?
+    - reviews.each do |review|
+      = render review
+
 
 %p.pull-right
   - if current_user == product.user
