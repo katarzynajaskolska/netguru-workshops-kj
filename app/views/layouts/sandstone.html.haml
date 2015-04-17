@@ -17,7 +17,7 @@
     %nav.navbar.navbar-inverse
       .container-fluid
         .navbar-header
-          %span.navbar-brand #{AppConfig.workshops_name}
+          = link_to "#{AppConfig.workshops_name}", root_path, class: 'navbar-brand'
         %ul.nav.navbar-nav.navbar-right
           - if current_user.nil?
             %li
