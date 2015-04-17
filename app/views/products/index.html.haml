@@ -1,13 +1,14 @@
-%h1 Listing products
+%h1 Listing products: #{category.name} category
 
-%table
-  %tr
-    %th Title
-    %th Description
-    %th Price
-    %th
-    %th
-    %th
+%table.table.table-hover
+  %thead
+    %tr
+      %th Title
+      %th Description
+      %th Price
+      %th
+      %th
+      %th
 
   - category.products.each do |product|
     %tr
@@ -19,5 +20,13 @@
       - if current_user == product.user
         %td= link_to 'Edit', edit_category_product_path(product.category, product)
         %td= link_to 'Destroy', category_product_path(product.category, product), method: :delete, data: { confirm: 'Are you sure?' }
-
+      - else
+        %td
+        %td
 %br
+
+%strong.pull-right= link_to 'Back', category
+
+- if current_user
+
+  = link_to 'New Product', new_category_product_path(category), class: 'btn btn-success'
