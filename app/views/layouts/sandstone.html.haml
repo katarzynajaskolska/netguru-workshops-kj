@@ -14,18 +14,20 @@
 
 
   %body
-    %nav.navbar.navbar-default
+    %nav.navbar.navbar-inverse
       .container-fluid
         .navbar-header
           %span.navbar-brand #{AppConfig.workshops_name}
-        %p.navbar-text.navbar-right
+        %ul.nav.navbar-nav.navbar-right
           - if current_user.nil?
-            = link_to 'Log in', new_user_session_path
-            = link_to 'Sign up', new_user_registration_path
-
+            %li
+              = link_to 'Log in', new_user_session_path
+            %li
+              = link_to 'Sign up', new_user_registration_path
           - else
-            %span #{current_user.fullname}
-            = link_to 'Log out', destroy_user_session_path, method: :delete
+            %li.navbar-brand #{current_user.fullname}
+            %li
+              = link_to 'Log out', destroy_user_session_path, method: :delete
     .container-fluid
       .row
         .col-lg-12
