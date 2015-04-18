@@ -16,19 +16,37 @@
         = link_to "settings", edit_user_registration_path(user), class: 'btn btn-success profile-page pull-right'
       - if current_user.admin? && !user.admin?
         = link_to "delete user", edit_user_registration_path(user), method: :delete, class: 'btn btn-danger profile-page pull-right'
-  %h2 User products:
-  %table.table.table-hover
-    %thead
-      %tr
-        %th Product
-        %th Category
-        %th Price
-        %th
-        %th
-      - user.products.each do |product|
+  .row
+    %h2 User products:
+    %table.table.table-hover
+      %thead
         %tr
-          %td= product.title
-          %td= product.category.name
-          %td= product.price
-          %td= link_to 'Edit', edit_category_product_path(product.category, product)
-          %td= link_to 'Destroy', category_product_path(product.category, product), method: :delete, data: { confirm: 'Are you sure?' }
+          %th Product
+          %th Category
+          %th Price
+          %th
+          %th
+        - user.products.each do |product|
+          %tr
+            %td= product.title
+            %td= product.category.name
+            %td= product.price
+            %td= link_to 'Edit', edit_category_product_path(product.category, product)
+            %td= link_to 'Destroy', category_product_path(product.category, product), method: :delete, data: { confirm: 'Are you sure?' }
+  .row
+    %h2 Last reviews:
+    %table.table.table-hover
+      %thead
+        %tr
+          %th Product (category)
+          %th Content
+          %th Rating
+          %th Date
+          %th
+        - user.reviews.last(5).each do |review|
+          %tr
+            %td= "#{review.product.title} (#{review.product.category.name.downcase})"
+            %td= review.content
+            %td= review.rating
+            %td= review.created_at.strftime("%m-%d-%y")
+            %td= link_to 'Remove', category_product_review_path(review.product.category, review.product, review), method: :delete, data: { confirm: 'Are you sure?' }
