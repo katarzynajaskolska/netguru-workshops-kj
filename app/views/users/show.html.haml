@@ -31,8 +31,9 @@
             %td= product.title
             %td= product.category.name
             %td= product.price
-            %td= link_to 'Edit', edit_category_product_path(product.category, product)
-            %td= link_to 'Destroy', category_product_path(product.category, product), method: :delete, data: { confirm: 'Are you sure?' }
+            - if user == current_user
+              %td= link_to 'Edit', edit_category_product_path(product.category, product)
+              %td= link_to 'Destroy', category_product_path(product.category, product), method: :delete, data: { confirm: 'Are you sure?' }
   .row
     %h2 Last reviews:
     %table.table.table-hover
@@ -49,4 +50,5 @@
             %td= review.content
             %td= review.rating
             %td= review.created_at.strftime("%m-%d-%y")
-            %td= link_to 'Remove', category_product_review_path(review.product.category, review.product, review), method: :delete, data: { confirm: 'Are you sure?' }
+            - if user == current_user
+              %td= link_to 'Remove', category_product_review_path(review.product.category, review.product, review), method: :delete, data: { confirm: 'Are you sure?' }
