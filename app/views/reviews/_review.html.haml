@@ -6,4 +6,6 @@
     %em= review.author
   - if current_user == review.user || current_user.admin?
     %td
-      %strong= link_to 'Remove', category_product_review_path(review.product.category, review.product, review), method: :delete, data: { confirm: 'Are you sure?' }
+      = link_to category_product_review_path(review.product.category, review.product, review), method: :delete, data: { confirm: 'Are you sure?' } do
+        %i.fa.fa-trash-o
+        Remove

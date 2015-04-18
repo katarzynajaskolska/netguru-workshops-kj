@@ -32,8 +32,14 @@
             %td= product.category.name
             %td= product.price
             - if user == current_user
-              %td= link_to 'Edit', edit_category_product_path(product.category, product)
-              %td= link_to 'Destroy', category_product_path(product.category, product), method: :delete, data: { confirm: 'Are you sure?' }
+              %td
+                = link_to edit_category_product_path(product.category, product) do
+                  %i.fa.fa-pencil-square-o
+                  Edit
+              %td
+                = link_to category_product_path(product.category, product), method: :delete, data: { confirm: 'Are you sure?' } do
+                  %i.fa.fa-trash-o
+                  Remove
             - else
               %td
               %td
@@ -54,6 +60,9 @@
             %td= review.rating
             %td= review.created_at.strftime("%m-%d-%y")
             - if user == current_user
-              %td= link_to 'Remove', category_product_review_path(review.product.category, review.product, review), method: :delete, data: { confirm: 'Are you sure?' }
+              %td
+                = link_to category_product_review_path(review.product.category, review.product, review), method: :delete, data: { confirm: 'Are you sure?' } do
+                  %i.fa.fa-trash-o
+                  Remove
             - else
               %td

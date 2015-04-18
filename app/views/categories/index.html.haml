@@ -13,12 +13,16 @@
     %tr
       %td= category.name
       %td
-        %strong= link_to 'Show', category
+        = link_to 'Show', category
       - if current_user && current_user.admin?
         %td
-          %strong= link_to 'Edit', edit_category_path(category)
+          = link_to edit_category_path(category) do
+            %i.fa.fa-pencil-square-o
+            Edit
         %td
-          %strong= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }
+          = link_to category, method: :delete, data: { confirm: 'Are you sure?' } do
+            %i.fa.fa-trash-o
+            Remove
 
 %br
 
