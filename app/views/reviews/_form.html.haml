@@ -1,6 +1,6 @@
 = simple_form_for [category, product, review] do |f|
   - if review.errors.any?
-    .alert.alert.dismissible.alert-danger
+    .alert.alert-dismissible.alert-danger
       %h2= "#{pluralize(review.errors.count, "error")} prohibited this review from being saved:"
       %ul
         - review.errors.full_messages.each do |msg|
