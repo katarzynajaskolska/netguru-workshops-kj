@@ -25,7 +25,8 @@
             %li
               = link_to 'Sign up', new_user_registration_path
           - else
-            %li.navbar-brand #{current_user.fullname}
+            %li
+              = link_to "#{current_user.fullname}", user_path(current_user), id: 'user-name'
             %li
               = link_to 'Log out', destroy_user_session_path, method: :delete
     .container-fluid
