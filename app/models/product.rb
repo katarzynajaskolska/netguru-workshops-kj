@@ -7,7 +7,7 @@ class Product < ActiveRecord::Base
   validates :price, format: {with: /\A\d+(?:\.\d{0,2})?\z/}
 
   def average_rating
-    self.reviews.map{|review| review.rating}.inject(:+).fdiv(self.reviews.length)
+    self.reviews.map{|review| review.rating}.inject(:+).fdiv(self.reviews.length).round(2)
   end
 
 end

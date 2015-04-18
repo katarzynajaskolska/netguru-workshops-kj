@@ -6,6 +6,7 @@
       %th Title
       %th Description
       %th Price
+      %th Average rating
       %th
       %th
       %th
@@ -15,6 +16,7 @@
       %td= product.title
       %td= product.description
       %td= product.price
+      %td= product.average_rating
       %td= link_to 'Show', category_product_path(product.category, product)
 
       - if current_user == product.user
