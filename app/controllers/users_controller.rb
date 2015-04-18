@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   private
 
     def proper_user
-      unless user == current_user
+      unless user == current_user || current_user.admin?
         redirect_to root_path, flash: {danger: 'You are not allowed to view this page.'}
       end
     rescue ActiveRecord::RecordNotFound
