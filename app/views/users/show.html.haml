@@ -34,6 +34,9 @@
             - if user == current_user
               %td= link_to 'Edit', edit_category_product_path(product.category, product)
               %td= link_to 'Destroy', category_product_path(product.category, product), method: :delete, data: { confirm: 'Are you sure?' }
+            - else
+              %td
+              %td
   .row
     %h2 Last reviews:
     %table.table.table-hover
@@ -52,3 +55,5 @@
             %td= review.created_at.strftime("%m-%d-%y")
             - if user == current_user
               %td= link_to 'Remove', category_product_review_path(review.product.category, review.product, review), method: :delete, data: { confirm: 'Are you sure?' }
+            - else
+              %td
