@@ -6,8 +6,9 @@
 
 %p
   %b Products:
-  - category.products.each do |product|
-    = product.title
+  = category.products.first.title
+  - category.products.drop(1).each do |product|
+    = "| #{product.title}"
 
 - if current_user
 
